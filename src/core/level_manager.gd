@@ -1,12 +1,16 @@
 extends Control
 
 const LEVEL_SCENES: Array[String] = [
+	"res://scenes/levels/call.tscn",
+	"res://scenes/levels/tutorial.tscn",
 	"res://scenes/levels/level1.tscn",
 	"res://scenes/levels/level2.tscn",
 	"res://scenes/levels/level3.tscn",
 ]
 
 @onready var level_buttons: Array[Button] = [
+	$MarginContainer/Panel/Content/VBox/Buttons/IntroLevelButton,
+	$MarginContainer/Panel/Content/VBox/Buttons/TutorialLevelButton,
 	$MarginContainer/Panel/Content/VBox/Buttons/Level1Button,
 	$MarginContainer/Panel/Content/VBox/Buttons/Level2Button,
 	$MarginContainer/Panel/Content/VBox/Buttons/Level3Button,
@@ -30,12 +34,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	match event.keycode:
-		KEY_1:
+		KEY_I:
 			_load_level(0)
-		KEY_2:
+		KEY_T:
 			_load_level(1)
-		KEY_3:
+		KEY_1:
 			_load_level(2)
+		KEY_2:
+			_load_level(3)
+		KEY_3:
+			_load_level(4)
 
 
 func _on_level_button_pressed(level_index: int) -> void:
