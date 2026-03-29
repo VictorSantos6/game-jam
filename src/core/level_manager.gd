@@ -1,7 +1,7 @@
 extends Control
 
 const LEVEL_SCENES: Array[String] = [
-	"res://scenes/levels/call.tscn",
+	"res://scenes/levels/introduction.tscn",
 	"res://scenes/levels/tutorial.tscn",
 	"res://scenes/levels/level1.tscn",
 	"res://scenes/levels/level2.tscn",
