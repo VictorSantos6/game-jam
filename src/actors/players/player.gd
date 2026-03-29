@@ -10,13 +10,15 @@ const STARTING_LIVES := 3
 const MAIN_MENU_PATH := "res://scenes/main_menu.tscn"
 const HIT_STUN_TIME := 0.4
 
-const WALL_JUMP_FORCE = Vector2(300, -400)
+const WALL_JUMP_FORCE = Vector2(400, -400)  # Increased horizontal push
+const WALL_SLIDE_SPEED = 60.0  # Max speed when sliding down wall
 
 static var remaining_lives := STARTING_LIVES
 
 var jump_count := 0
 var max_jumps := 2
 var is_dead := false
+var wall_jump_started := false
 var is_in_hit_stun := false
 
 enum State {
@@ -49,11 +51,16 @@ func _physics_process(delta: float) -> void:
 
 	# Gravity
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		if is_on_wall():
+			# Wall slide: friction effect - slow descent
+			velocity.y = move_toward(velocity.y, WALL_SLIDE_SPEED, get_gravity().y * delta)
+		else:
+			velocity += get_gravity() * delta
 
 	# Reset jumps on floor
 	if is_on_floor():
 		jump_count = 0
+		wall_jump_started = false
 
 	var direction = Input.get_axis("left", "right")
 
@@ -73,11 +80,14 @@ func _physics_process(delta: float) -> void:
 		elif is_on_wall():
 			var wall_dir = get_wall_normal().x
 			velocity = Vector2(wall_dir * WALL_JUMP_FORCE.x, WALL_JUMP_FORCE.y)
+			wall_jump_started = true
+			jump_count = max_jumps  # Consume air jumps so can't double-jump after wall jump
 			change_state(State.WALL_JUMP)
 
 		elif jump_count < max_jumps:
 			velocity.y = JUMP_VELOCITY
 			jump_count += 1
+			wall_jump_started = false
 			change_state(State.DOUBLE_JUMP)
 
 	move_and_slide()
@@ -126,15 +136,23 @@ func update_state(direction: float) -> void:
 	if state == State.WALL_JUMP:
 		if is_on_floor():
 			change_state(State.IDLE)
+		elif not is_on_wall():
+			if velocity.y < 0:
+				change_state(State.JUMP)
+			else:
+				change_state(State.FALL)
 		return
 
 	if not is_on_floor():
 		if velocity.y < 0:
-			if jump_count == 2:
+			if wall_jump_started:
+				change_state(State.JUMP)
+			elif jump_count == 2:
 				change_state(State.DOUBLE_JUMP)
 			else:
 				change_state(State.JUMP)
 		else:
+			wall_jump_started = false
 			change_state(State.FALL)
 	else:
 		if direction != 0:
