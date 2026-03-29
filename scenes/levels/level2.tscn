@@ -600,7 +600,7 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
 
-[node name="Level1" type="Node2D" unique_id=865833033]
+[node name="Level2" type="Node2D" unique_id=865833033]
 
 [node name="GameManager" type="Node" parent="." unique_id=1603762692]
 unique_name_in_owner = true
