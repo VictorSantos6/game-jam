@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bpgqvwo4v6rgi"]
 
 [ext_resource type="Texture2D" uid="uid://gojfbdhmhime" path="res://assets/textures/world_tileset.png" id="1_g5yjh"]
-[ext_resource type="PackedScene" uid="uid://c60b5jsi1hxe0" path="res://scenes/actors/players/intro_player.tscn" id="2_g5yjh"]
+[ext_resource type="PackedScene" path="res://scenes/actors/players/intro_player.tscn" id="2_g5yjh"]
 [ext_resource type="PackedScene" uid="uid://ccighg7i0l2bu" path="res://scenes/core/killzone.tscn" id="3_ltv2p"]
-[ext_resource type="PackedScene" uid="uid://dchbniv5mkdgq" path="res://scenes/objects/collectibles/phone.tscn" id="4_r5vq4"]
+[ext_resource type="PackedScene" path="res://scenes/objects/collectibles/phone.tscn" id="4_r5vq4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5vq4"]
 texture = ExtResource("1_g5yjh")
@@ -163,7 +163,7 @@ sources/0 = SubResource("TileSetAtlasSource_r5vq4")
 normal = Vector2(1, 0)
 distance = 11.0
 
-[node name="Node" type="Node2D" unique_id=583190980]
+[node name="Introduction" type="Node2D" unique_id=583190980]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1732102249]
 tile_set = SubResource("TileSet_0b8kd")
