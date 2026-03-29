@@ -1,14 +1,21 @@
 extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hearts_label: Label = $CanvasLayer/HUD/HeartsLabel
+@onready var game_over_label: Label = $CanvasLayer/HUD/GameOverLabel
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
+const STARTING_LIVES := 3
+const MAIN_MENU_PATH := "res://scenes/main_menu.tscn"
 
 const WALL_JUMP_FORCE = Vector2(300, -400)
 
+static var remaining_lives := STARTING_LIVES
+
 var jump_count := 0
 var max_jumps := 2
+var is_dead := false
 
 enum State {
 	IDLE,
@@ -21,6 +28,11 @@ enum State {
 }
 
 var state: State = State.IDLE
+
+
+func _ready() -> void:
+	update_life_ui()
+	game_over_label.visible = false
 
 func _physics_process(delta: float) -> void:
 	# Gravity
@@ -64,6 +76,39 @@ func _physics_process(delta: float) -> void:
 	# Flip sprite
 	if direction != 0:
 		sprite.flip_h = direction < 0
+
+
+func lose_life() -> void:
+	if is_dead:
+		return
+
+	is_dead = true
+	Engine.time_scale = 0.5
+	change_state(State.HIT)
+
+	var collision_shape: CollisionShape2D = get_node_or_null("CollisionShape2D")
+	if collision_shape:
+		collision_shape.set_deferred("disabled", true)
+
+	remaining_lives = max(remaining_lives - 1, 0)
+	update_life_ui()
+
+	if remaining_lives == 0:
+		game_over_label.text = "Connection Failed"
+		game_over_label.visible = true
+		await get_tree().create_timer(1.2).timeout
+		Engine.time_scale = 1.0
+		remaining_lives = STARTING_LIVES
+		get_tree().change_scene_to_file(MAIN_MENU_PATH)
+		return
+
+	await get_tree().create_timer(0.6).timeout
+	Engine.time_scale = 1.0
+	get_tree().reload_current_scene()
+
+
+func update_life_ui() -> void:
+	hearts_label.text = "<3".repeat(remaining_lives)
 
 
 func update_state(direction: float) -> void:
