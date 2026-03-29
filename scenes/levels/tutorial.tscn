@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dggda5lmyem44"]
 
+[ext_resource type="Script" uid="uid://mreskgfs0wue" path="res://src/core/game_manager.gd" id="1_7ac3l"]
 [ext_resource type="Texture2D" uid="uid://mo77p07tut87" path="res://assets/textures/lab_tileset_LITE.png" id="1_8ho6b"]
 [ext_resource type="PackedScene" uid="uid://y2anhja757e8" path="res://scenes/actors/players/player.tscn" id="2_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://ccighg7i0l2bu" path="res://scenes/core/killzone.tscn" id="3_ph3nu"]
@@ -439,6 +440,10 @@ cache/0/12/0/scale = 1.0
 
 [node name="Tutorial" type="Node2D" unique_id=945611047]
 
+[node name="GameManager" type="Node" parent="." unique_id=1227860]
+unique_name_in_owner = true
+script = ExtResource("1_7ac3l")
+
 [node name="TileMap" type="TileMap" parent="." unique_id=197518417]
 position = Vector2(1, 0)
 tile_set = SubResource("TileSet_cq4me")
@@ -451,7 +456,7 @@ layer_2/name = "decorationse"
 layer_2/tile_data = PackedInt32Array(-131091, 393216, 4, -65555, 393216, 5, -131090, 458752, 4, -65554, 458752, 5, 131100, 393216, 4, 196636, 393216, 5, 131101, 458752, 4, 196637, 458752, 5, -327593, 393216, 4, -262057, 393216, 5, -327592, 458752, 4, -262056, 458752, 5, -720783, 393216, 4, -655247, 393216, 5, -720782, 458752, 4, -655246, 458752, 5, -1441696, 393216, 4, -1376160, 393216, 5, -1441695, 458752, 4, -1376159, 458752, 5, -1900493, 393216, 4, -1834957, 393216, 5, -1900492, 458752, 4, -1834956, 458752, 5, -1310724, 393216, 4, -1245188, 393216, 5, -1310723, 458752, 4, -1245187, 458752, 5, -1441821, 393216, 4, -1376285, 393216, 5, -1441820, 458752, 4, -1376284, 458752, 5, 196663, 262144, 6, 262199, 262144, 7, 196664, 327680, 6, 262200, 327680, 7, 393181, 0, 0, 458717, 0, 1, 393182, 65536, 0, 458718, 65536, 1, 327652, 0, 6, 393188, 0, 7, 327653, 65536, 6, 393189, 65536, 7, 262178, 0, 6, 327714, 0, 7, 262179, 65536, 6, 327715, 65536, 7, 262213, 0, 6, 327749, 0, 7, 262214, 65536, 6, 327750, 65536, 7, 262257, 131072, 6, 327793, 131072, 7, 262258, 196608, 6, 327794, 196608, 7, -1048464, 131072, 6, -982928, 131072, 7, -1048463, 196608, 6, -982927, 196608, 7, -1179523, 0, 6, -1113987, 0, 7, -1179522, 65536, 6, -1113986, 65536, 7, -1179498, 0, 6, -1113962, 0, 7, -1179497, 65536, 6, -1113961, 65536, 7)
 
 [node name="Player" parent="." unique_id=807048912 instance=ExtResource("2_ph3nu")]
-position = Vector2(1815, 108)
+position = Vector2(-595, 120)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=535888260]
 position = Vector2(-1, -16)
@@ -488,9 +493,9 @@ position = Vector2(-43, 115)
 
 [node name="Label3" type="Label" parent="Extinguishers" unique_id=1415814351]
 offset_left = -48.0
-offset_top = -15.0
+offset_top = 10.0
 offset_right = 50.0
-offset_bottom = 8.0
+offset_bottom = 33.0
 theme_override_font_sizes/font_size = 12
 text = "Pick up the coins"
 
@@ -513,9 +518,9 @@ position = Vector2(74, 115)
 
 [node name="Press Space to Jump" type="Label" parent="Labels" unique_id=134573693]
 offset_left = 536.0
-offset_top = -38.0
+offset_top = 13.0
 offset_right = 808.0
-offset_bottom = 28.0
+offset_bottom = 79.0
 theme_override_font_sizes/font_size = 12
 text = "Press Space to Jump
 "
@@ -531,18 +536,18 @@ theme_override_font_sizes/font_size = 12
 text = "Jump on the wall to wall jump"
 
 [node name="Label" type="Label" parent="Labels" unique_id=380381540]
-offset_left = -845.0
-offset_top = -20.0
-offset_right = -573.0
-offset_bottom = 46.0
+offset_left = -789.0
+offset_top = 37.0
+offset_right = -517.0
+offset_bottom = 103.0
 theme_override_font_sizes/font_size = 12
 text = "Press right and left arrows to move"
 
 [node name="press space two times to double jump" type="Label" parent="Labels" unique_id=1215800674]
-offset_left = 1076.0
-offset_top = -39.0
-offset_right = 1348.0
-offset_bottom = 27.0
+offset_left = 1078.0
+offset_top = 15.0
+offset_right = 1350.0
+offset_bottom = 81.0
 theme_override_fonts/font = SubResource("FontFile_ph3nu")
 theme_override_font_sizes/font_size = 12
 text = "Press Space two time to double jump

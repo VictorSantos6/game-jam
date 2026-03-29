@@ -190,8 +190,7 @@ position = Vector2(52, 214)
 position = Vector2(-3, -77)
 shape = SubResource("WorldBoundaryShape2D_r5vq4")
 
-[node name="extinguisher" parent="." unique_id=434161155 instance=ExtResource("4_r5vq4")]
-visible = false
+[node name="Phone" parent="." unique_id=434161155 instance=ExtResource("4_r5vq4")]
 position = Vector2(184, -16)
 
 [node name="Label" type="Label" parent="." unique_id=472216548]

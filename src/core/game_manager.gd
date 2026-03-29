@@ -1,9 +1,10 @@
 extends Node
 
-@onready var score_label: Label = $ScoreLabel
+@onready var player: CharacterBody2D = $"../Player"
 
 var score = 0
 
 func add_point():
 	score += 1
-	score_label.text = "You have " + str(score) + " coins!"
+	var score_label = player.get_node("CanvasLayer/HUD/ScoreLabel")
+	score_label.text = "Coins: " + str(score)

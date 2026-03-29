@@ -606,17 +606,6 @@ _data = {
 unique_name_in_owner = true
 script = ExtResource("1_dj4wq")
 
-[node name="ScoreLabel" type="Label" parent="GameManager" unique_id=1649961235]
-texture_filter = 1
-offset_left = -152.0
-offset_top = -400.0
-offset_right = -16.0
-offset_bottom = -345.0
-text = "You have X coins."
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="TileMap" type="TileMap" parent="." unique_id=285999477]
 tile_set = SubResource("TileSet_p57ef")
 format = 2
