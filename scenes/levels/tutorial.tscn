@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dggda5lmyem44"]
 
+[ext_resource type="Script" uid="uid://mreskgfs0wue" path="res://src/core/game_manager.gd" id="1_7ac3l"]
 [ext_resource type="Texture2D" uid="uid://mo77p07tut87" path="res://assets/textures/lab_tileset_LITE.png" id="1_8ho6b"]
 [ext_resource type="PackedScene" uid="uid://y2anhja757e8" path="res://scenes/actors/players/player.tscn" id="2_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://ccighg7i0l2bu" path="res://scenes/core/killzone.tscn" id="3_ph3nu"]
@@ -438,6 +439,10 @@ cache/0/12/0/underline_thickness = 0.0
 cache/0/12/0/scale = 1.0
 
 [node name="Tutorial" type="Node2D" unique_id=945611047]
+
+[node name="GameManager" type="Node" parent="." unique_id=1227860]
+unique_name_in_owner = true
+script = ExtResource("1_7ac3l")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=197518417]
 position = Vector2(1, 0)
