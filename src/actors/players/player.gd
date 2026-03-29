@@ -11,7 +11,7 @@ const MAIN_MENU_PATH := "res://scenes/main_menu.tscn"
 const HIT_STUN_TIME := 0.4
 const DEATH_FALL_TIME := 1.2
 
-const WALL_JUMP_FORCE = Vector2(400, -400)  # Increased horizontal push
+const WALL_JUMP_FORCE = Vector2(600,  -400)  # Increased horizontal push
 const WALL_SLIDE_SPEED = 60.0  # Max speed when sliding down wall
 
 static var remaining_lives := STARTING_LIVES
@@ -146,6 +146,8 @@ func update_state(direction: float) -> void:
 	if state == State.WALL_JUMP:
 		if is_on_floor():
 			change_state(State.IDLE)
+		elif is_on_wall() and velocity.y < 0:
+			change_state(State.JUMP)
 		elif not is_on_wall():
 			if velocity.y < 0:
 				change_state(State.JUMP)
@@ -154,7 +156,10 @@ func update_state(direction: float) -> void:
 		return
 
 	if not is_on_floor():
-		if velocity.y < 0:
+		if is_on_wall() and velocity.y >= 0:
+			wall_jump_started = false
+			change_state(State.WALL_JUMP)
+		elif velocity.y < 0:
 			if wall_jump_started:
 				change_state(State.JUMP)
 			elif jump_count == 2:
@@ -171,7 +176,7 @@ func update_state(direction: float) -> void:
 			change_state(State.IDLE)
 
 
-func update_animation(direction: float) -> void:
+func update_animation(_direction: float) -> void:
 	match state:
 		State.IDLE:
 			play_anim("idle")
