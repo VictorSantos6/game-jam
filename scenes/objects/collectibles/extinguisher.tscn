@@ -1,18 +1,8 @@
 [gd_scene format=3 uid="uid://j54y77ts2qx2"]
 
 [ext_resource type="Texture2D" uid="uid://pt8s5urix2w0" path="res://assets/textures/separated/tile012.png" id="1_0bl7f"]
+[ext_resource type="Script" uid="uid://b4gmo0qcr0v65" path="res://src/objects/collectibles/extinguisher.gd" id="1_k1n1a"]
 [ext_resource type="AudioStream" uid="uid://rq4h6qydr6ou" path="res://assets/audio/sfx/collect_extinguisher.mp3" id="2_fdt0t"]
-
-[sub_resource type="GDScript" id="GDScript_gtnjt"]
-script/source = "extends Area2D
-
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var game_manager: Node = %GameManager
-
-func _on_body_entered(body: Node2D) -> void:
-	game_manager.add_point()
-	animation_player.play(\"pickup\")
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfv2v"]
 atlas = ExtResource("1_0bl7f")
@@ -134,9 +124,10 @@ _data = {
 [node name="extinguisher" type="Area2D" unique_id=434161155]
 texture_filter = 1
 collision_mask = 2
-script = SubResource("GDScript_gtnjt")
+script = ExtResource("1_k1n1a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1837980921]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7xad8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=341883742]

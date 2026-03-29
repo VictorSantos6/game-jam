@@ -349,8 +349,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxv1v"]
-radius = 8.0
-height = 22.0
+height = 24.0
 
 [node name="Player" type="CharacterBody2D" unique_id=807048912]
 z_index = 5
@@ -362,7 +361,7 @@ script = ExtResource("1_eo122")
 texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_phadu")
-animation = &"wall_jumping"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1257208771]
