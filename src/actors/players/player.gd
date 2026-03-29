@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -300.0
 const STARTING_LIVES := 3
 const MAIN_MENU_PATH := "res://scenes/main_menu.tscn"
 const HIT_STUN_TIME := 0.4
+const DEATH_FALL_TIME := 1.2
 
 const WALL_JUMP_FORCE = Vector2(400, -400)  # Increased horizontal push
 const WALL_SLIDE_SPEED = 60.0  # Max speed when sliding down wall
@@ -40,6 +41,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
+		velocity += get_gravity() * delta
+		move_and_slide()
+		change_state(State.FALL)
+		update_animation(0.0)
 		return
 
 	if is_in_hit_stun:
@@ -113,9 +118,14 @@ func lose_life() -> void:
 
 	if remaining_lives == 0:
 		is_dead = true
+		is_in_hit_stun = false
+		var collision_shape: CollisionShape2D = get_node_or_null("CollisionShape2D")
+		if collision_shape:
+			collision_shape.set_deferred("disabled", true)
+		velocity = Vector2(0.0, -120.0)
 		game_over_label.text = "Connection Failed"
 		game_over_label.visible = true
-		await get_tree().create_timer(1.2).timeout
+		await get_tree().create_timer(DEATH_FALL_TIME).timeout
 		remaining_lives = STARTING_LIVES
 		get_tree().change_scene_to_file(MAIN_MENU_PATH)
 		return
