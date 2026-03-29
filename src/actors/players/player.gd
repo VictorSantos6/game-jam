@@ -8,6 +8,7 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 const STARTING_LIVES := 3
 const MAIN_MENU_PATH := "res://scenes/main_menu.tscn"
+const HIT_STUN_TIME := 0.4
 
 const WALL_JUMP_FORCE = Vector2(300, -400)
 
@@ -16,6 +17,7 @@ static var remaining_lives := STARTING_LIVES
 var jump_count := 0
 var max_jumps := 2
 var is_dead := false
+var is_in_hit_stun := false
 
 enum State {
 	IDLE,
@@ -35,6 +37,16 @@ func _ready() -> void:
 	game_over_label.visible = false
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
+
+	if is_in_hit_stun:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+		move_and_slide()
+		update_animation(0.0)
+		return
+
 	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -79,32 +91,28 @@ func _physics_process(delta: float) -> void:
 
 
 func lose_life() -> void:
-	if is_dead:
+	if is_dead or is_in_hit_stun:
 		return
 
-	is_dead = true
-	Engine.time_scale = 0.5
+	is_in_hit_stun = true
 	change_state(State.HIT)
-
-	var collision_shape: CollisionShape2D = get_node_or_null("CollisionShape2D")
-	if collision_shape:
-		collision_shape.set_deferred("disabled", true)
+	velocity = Vector2(-120.0 if sprite.flip_h else 120.0, -180.0)
 
 	remaining_lives = max(remaining_lives - 1, 0)
 	update_life_ui()
 
 	if remaining_lives == 0:
+		is_dead = true
 		game_over_label.text = "Connection Failed"
 		game_over_label.visible = true
 		await get_tree().create_timer(1.2).timeout
-		Engine.time_scale = 1.0
 		remaining_lives = STARTING_LIVES
 		get_tree().change_scene_to_file(MAIN_MENU_PATH)
 		return
 
-	await get_tree().create_timer(0.6).timeout
-	Engine.time_scale = 1.0
-	get_tree().reload_current_scene()
+	await get_tree().create_timer(HIT_STUN_TIME).timeout
+	is_in_hit_stun = false
+	change_state(State.IDLE)
 
 
 func update_life_ui() -> void:
@@ -112,6 +120,9 @@ func update_life_ui() -> void:
 
 
 func update_state(direction: float) -> void:
+	if state == State.HIT:
+		return
+
 	if state == State.WALL_JUMP:
 		if is_on_floor():
 			change_state(State.IDLE)
