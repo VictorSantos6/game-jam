@@ -13,9 +13,11 @@ enum PoleRole {
 
 const CONNECTION_COMPLETE_SCENE := "res://scenes/core/connection_complete.tscn"
 const CONNECTION_COMPLETE_SCRIPT := preload("res://src/core/connection_complete.gd")
+const INTRO_SCENE := "res://scenes/levels/introduction.tscn"
 const TUTORIAL_SCENE := "res://scenes/levels/tutorial.tscn"
 const LEVEL1_SCENE := "res://scenes/levels/level1.tscn"
 const LEVEL2_SCENE := "res://scenes/levels/level2.tscn"
+const NEXT_LEVEL_AFTER_INTRO := "res://scenes/levels/tutorial.tscn"
 const NEXT_LEVEL_AFTER_TUTORIAL := "res://scenes/levels/level1.tscn"
 const NEXT_LEVEL_AFTER_FIRST := "res://scenes/levels/level2.tscn"
 const NEXT_LEVEL_AFTER_SECOND := "res://scenes/levels/ending.tscn"
@@ -135,6 +137,9 @@ func trigger_level_completion() -> void:
 	var next_scene := ""
 
 	match current_path:
+		INTRO_SCENE:
+			message = "Introduction completed"
+			next_scene = NEXT_LEVEL_AFTER_INTRO
 		TUTORIAL_SCENE:
 			message = "Tutorial connection completed"
 			next_scene = NEXT_LEVEL_AFTER_TUTORIAL
@@ -150,6 +155,11 @@ func trigger_level_completion() -> void:
 
 	CONNECTION_COMPLETE_SCRIPT.pending_message = message
 	CONNECTION_COMPLETE_SCRIPT.pending_next_scene = next_scene
+	# Unlock the current scene (mark completed) and the next scene (unlock progression)
+	if current_path != null and current_path != "":
+		Progression.unlock_scene(current_path)
+	if next_scene != null and next_scene != "":
+		Progression.unlock_scene(next_scene)
 	var completion_scene := load(CONNECTION_COMPLETE_SCENE) as PackedScene
 	if completion_scene == null:
 		return

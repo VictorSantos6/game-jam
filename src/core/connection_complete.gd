@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_ENTER or event.keycode == KEY_SPACE:
+		if event.keycode == KEY_ENTER or event.keycode == KEY_SPACE or event.keycode == KEY_ESCAPE:
 			_go_next_scene()
 
 
@@ -35,6 +35,11 @@ func _go_next_scene() -> void:
 	var target_scene := pending_next_scene
 	if target_scene.is_empty():
 		target_scene = MAIN_MENU_PATH
+
+	# Ensure the progression state includes the next scene (idempotent)
+	if target_scene != null and target_scene != "":
+		if Progression != null:
+			Progression.unlock_scene(target_scene)
 
 	var error := get_tree().change_scene_to_file(target_scene)
 	if error != OK:
