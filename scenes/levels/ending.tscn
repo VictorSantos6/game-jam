@@ -181,7 +181,6 @@ zoom = Vector2(4, 4)
 limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true
-rotation_smoothing_enabled = true
 
 [node name="Killzone" parent="." unique_id=1573277971 instance=ExtResource("3_552jh")]
 position = Vector2(52, 214)
