@@ -8,10 +8,11 @@ var total_coins = 0
 
 func _ready() -> void:
 	total_coins = count_level_coins()
+	score = total_coins
 	update_score_label()
 
 func add_point() -> void:
-	score += 1
+	score -= 1
 	update_score_label()
 
 
@@ -26,7 +27,7 @@ func update_score_label() -> void:
 		return
 	var score_label := player.get_node_or_null("CanvasLayer/HUD/ScoreLabel") as Label
 	if score_label != null:
-		score_label.text = "Signal: " + str(score)
+		score_label.text = "Signal Left: " + str(score)
 
 
 func count_level_coins() -> int:

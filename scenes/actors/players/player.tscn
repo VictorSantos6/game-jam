@@ -407,4 +407,4 @@ offset_top = 13.0
 offset_right = 730.0
 offset_bottom = 145.0
 theme_override_font_sizes/font_size = 52
-text = "Signal: 0"
+text = "Signal Left: 0"
