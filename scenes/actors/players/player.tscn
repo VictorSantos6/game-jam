@@ -378,15 +378,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HeartsLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1052999109]
+[node name="HeartsContainer" type="HBoxContainer" parent="CanvasLayer/HUD" unique_id=1052999109]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 14.0
-offset_right = 220.0
-offset_bottom = 58.0
-theme_override_colors/font_color = Color(0.95, 0.18, 0.18, 1)
-theme_override_font_sizes/font_size = 96
-text = "<3<3<3"
+offset_right = 280.0
+offset_bottom = 86.0
+theme_override_constants/separation = 6
 
 [node name="GameOverLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1474941432]
 visible = false

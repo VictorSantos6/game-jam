@@ -530,10 +530,10 @@ theme_override_font_sizes/font_size = 12
 text = "Jump on the wall to wall jump"
 
 [node name="Label" type="Label" parent="Labels" unique_id=380381540]
-offset_left = -830.0
-offset_top = 127.0
-offset_right = -558.0
-offset_bottom = 193.0
+offset_left = -821.0
+offset_top = 3.0
+offset_right = -426.0
+offset_bottom = 69.0
 theme_override_font_sizes/font_size = 12
 text = "Hi, your name is Signal. 
 Your job is to connect incoming phone calls to their correct receiver."
@@ -551,10 +551,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Labels" unique_id=1876724278]
-offset_left = -568.0
-offset_top = 12.0
-offset_right = -295.0
-offset_bottom = 49.0
+offset_left = -315.0
+offset_top = 15.0
+offset_right = -42.0
+offset_bottom = 52.0
 theme_override_font_sizes/font_size = 12
 text = "Collect all the coins and passs 
 through both poles to win!!"

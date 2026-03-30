@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hearts_label: Label = $CanvasLayer/HUD/HeartsLabel
+@onready var hearts_container: HBoxContainer = $CanvasLayer/HUD/HeartsContainer
 @onready var game_over_label: Label = $CanvasLayer/HUD/GameOverLabel
+
+const HEART_TEXTURE := preload("res://assets/textures/heart pixel art 32x32.png")
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
@@ -179,7 +181,15 @@ func lose_life(respawn_at_spawn: bool = false) -> void:
 
 
 func update_life_ui() -> void:
-	hearts_label.text = "<3".repeat(remaining_lives)
+	for child in hearts_container.get_children():
+		child.queue_free()
+
+	for _i in range(remaining_lives):
+		var heart := TextureRect.new()
+		heart.texture = HEART_TEXTURE
+		heart.custom_minimum_size = Vector2(64.0, 64.0)
+		heart.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		hearts_container.add_child(heart)
 
 
 func update_state(direction: float) -> void:
