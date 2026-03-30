@@ -4,18 +4,62 @@
 [ext_resource type="PackedScene" uid="uid://bpgqvwo4v6rgi" path="res://scenes/levels/introduction.tscn" id="2_36u1n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_menu_panel"]
-bg_color = Color(0.0470588, 0.0862745, 0.168627, 0.64)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.278431, 0.756863, 0.92549, 0.75)
-shadow_color = Color(0, 0, 0, 0.45)
-shadow_size = 10
+bg_color = Color(0.709804, 0.839216, 0.972549, 0.2)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.913725, 0.984314, 1, 0.62)
+shadow_color = Color(0.0235294, 0.137255, 0.278431, 0.5)
+shadow_size = 22
+anti_aliasing = true
+anti_aliasing_size = 1.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0.831373, 0.929412, 1, 0.2)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.882353, 0.976471, 1, 0.55)
+anti_aliasing = true
+anti_aliasing_size = 1.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.752941, 0.901961, 1, 0.32)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.960784, 1, 1, 0.8)
+anti_aliasing = true
+anti_aliasing_size = 1.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.6, 0.827451, 0.952941, 0.34)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.972549, 1, 1, 0.95)
+anti_aliasing = true
+anti_aliasing_size = 1.2
 
 [node name="MainMenu" type="Node2D" unique_id=648985652]
 
@@ -45,7 +89,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0196078, 0.0431373, 0.0823529, 0.28)
+color = Color(0.0196078, 0.0431373, 0.0823529, 0.2)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=1156791349]
 layout_mode = 1
@@ -76,7 +120,7 @@ theme_override_constants/separation = 18
 
 [node name="GameTitle" type="Label" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox" unique_id=998112345]
 layout_mode = 2
-theme_override_font_sizes/font_size = 86
+theme_override_font_sizes/font_size = 104
 theme_override_constants/outline_size = 4
 theme_override_colors/font_color = Color(0.890196, 0.976471, 1, 1)
 theme_override_colors/font_outline_color = Color(0.0509804, 0.12549, 0.25098, 1)
@@ -85,13 +129,13 @@ horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox" unique_id=1963892961]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 46
 text = "Pick A Level"
 horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox" unique_id=553292350]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 24
 text = "Choose any stage to jump straight into it."
 horizontal_alignment = 1
 
@@ -100,44 +144,86 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="IntroLevelButton" type="Button" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox/Buttons" unique_id=23975898]
-custom_minimum_size = Vector2(0, 56)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.937255, 0.988235, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "Intro
 "
 
 [node name="TutorialLevelButton" type="Button" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox/Buttons" unique_id=1868954362]
-custom_minimum_size = Vector2(0, 56)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.937255, 0.988235, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "Tutorial"
 
 [node name="Level1Button" type="Button" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox/Buttons" unique_id=1397667772]
-custom_minimum_size = Vector2(0, 56)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.937255, 0.988235, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "Level 1"
 
 [node name="Level2Button" type="Button" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox/Buttons" unique_id=1818308253]
-custom_minimum_size = Vector2(0, 56)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.937255, 0.988235, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "Level 2"
 
 [node name="Level3Button" type="Button" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox/Buttons" unique_id=914256933]
-custom_minimum_size = Vector2(0, 56)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.937255, 0.988235, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "Level 3"
 
 [node name="EndingButton" type="Button" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox/Buttons" unique_id=2034567890]
-custom_minimum_size = Vector2(0, 56)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.937255, 0.988235, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "Ending"
 
 [node name="Hint" type="Label" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox" unique_id=557199832]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 text = "Click a button or press 1, 2, 3, or E."
 horizontal_alignment = 1
 
 [node name="Status" type="Label" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox" unique_id=127559550]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 22
 text = "Ready"
 horizontal_alignment = 1
