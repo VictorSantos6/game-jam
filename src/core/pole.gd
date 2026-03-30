@@ -16,11 +16,9 @@ const CONNECTION_COMPLETE_SCRIPT := preload("res://src/core/connection_complete.
 const TUTORIAL_SCENE := "res://scenes/levels/tutorial.tscn"
 const LEVEL1_SCENE := "res://scenes/levels/level1.tscn"
 const LEVEL2_SCENE := "res://scenes/levels/level2.tscn"
-const LEVEL3_SCENE := "res://scenes/levels/level3.tscn"
 const NEXT_LEVEL_AFTER_TUTORIAL := "res://scenes/levels/level1.tscn"
 const NEXT_LEVEL_AFTER_FIRST := "res://scenes/levels/level2.tscn"
-const NEXT_LEVEL_AFTER_SECOND := "res://scenes/levels/level3.tscn"
-const NEXT_LEVEL_AFTER_THIRD := "res://scenes/levels/ending.tscn"
+const NEXT_LEVEL_AFTER_SECOND := "res://scenes/levels/ending.tscn"
 
 static var start_pole: Pole = null
 
@@ -146,9 +144,6 @@ func trigger_level_completion() -> void:
 		LEVEL2_SCENE:
 			message = "Second connection completed"
 			next_scene = NEXT_LEVEL_AFTER_SECOND
-		LEVEL3_SCENE:
-			message = "Third connection completed"
-			next_scene = NEXT_LEVEL_AFTER_THIRD
 		_:
 			# Only run this transition flow for level progression scenes.
 			return

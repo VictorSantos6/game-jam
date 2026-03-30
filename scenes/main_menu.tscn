@@ -186,18 +186,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
 text = "Level 2"
 
-[node name="Level3Button" type="Button" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox/Buttons" unique_id=914256933]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.937255, 0.988235, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
-theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
-text = "Level 3"
-
 [node name="EndingButton" type="Button" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox/Buttons" unique_id=2034567890]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
