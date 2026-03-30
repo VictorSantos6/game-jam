@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ccighg7i0l2bu" path="res://scenes/core/killzone.tscn" id="3_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://cds5dyc4tpuiy" path="res://scenes/actors/enemies/ladybug.tscn" id="4_4kmhl"]
 [ext_resource type="PackedScene" uid="uid://j54y77ts2qx2" path="res://scenes/objects/collectibles/extinguisher.tscn" id="5_cq4me"]
+[ext_resource type="PackedScene" uid="uid://x0ccjnybw2xo" path="res://scenes/actors/enemies/electron.tscn" id="7_iig34"]
+[ext_resource type="PackedScene" uid="uid://dsxcdjrdkax43" path="res://scenes/core/Pole.tscn" id="8_3e81p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kmhl"]
 texture = ExtResource("1_8ho6b")
@@ -528,10 +530,10 @@ theme_override_font_sizes/font_size = 12
 text = "Jump on the wall to wall jump"
 
 [node name="Label" type="Label" parent="Labels" unique_id=380381540]
-offset_left = -623.0
-offset_top = 17.0
-offset_right = -79.0
-offset_bottom = 83.0
+offset_left = -830.0
+offset_top = 127.0
+offset_right = -558.0
+offset_bottom = 193.0
 theme_override_font_sizes/font_size = 12
 text = "Hi, your name is Signal. 
 Your job is to connect incoming phone calls to their correct receiver."
@@ -548,10 +550,21 @@ text = "Press Space two time to double jump
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="Labels" unique_id=1415814351]
-offset_left = -48.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 33.0
+[node name="Label3" type="Label" parent="Labels" unique_id=1876724278]
+offset_left = -568.0
+offset_top = 12.0
+offset_right = -295.0
+offset_bottom = 49.0
 theme_override_font_sizes/font_size = 12
-text = "Pick up all the \"Signal points\" to win"
+text = "Collect all the coins and passs 
+through both poles to win!!"
+
+[node name="Electron" parent="." unique_id=121771087 instance=ExtResource("7_iig34")]
+position = Vector2(1655, 99)
+
+[node name="Pole" parent="." unique_id=1647662865 instance=ExtResource("8_3e81p")]
+position = Vector2(-484, 118)
+
+[node name="PoleEnd" parent="." unique_id=1741903811 instance=ExtResource("8_3e81p")]
+position = Vector2(2494, -251)
+role = 1

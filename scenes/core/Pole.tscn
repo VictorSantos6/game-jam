@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dsxcdjrdkax43"]
+
+[ext_resource type="Texture2D" uid="uid://pps5n82d524m" path="res://assets/textures/22.png" id="1_q8spp"]
+[ext_resource type="Script" uid="uid://bw4h4tbtlqxhq" path="res://src/core/pole.gd" id="2_sxj4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdr85"]
+size = Vector2(4, 20)
+
+[node name="Pole" type="Area2D" unique_id=1647662865]
+collision_mask = 2
+script = ExtResource("2_sxj4e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=699644592]
+texture = ExtResource("1_q8spp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1341978217]
+shape = SubResource("RectangleShape2D_mdr85")
