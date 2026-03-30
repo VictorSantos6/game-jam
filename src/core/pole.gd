@@ -155,4 +155,12 @@ func trigger_level_completion() -> void:
 
 	CONNECTION_COMPLETE_SCRIPT.pending_message = message
 	CONNECTION_COMPLETE_SCRIPT.pending_next_scene = next_scene
-	get_tree().change_scene_to_file(CONNECTION_COMPLETE_SCENE)
+	var completion_scene := load(CONNECTION_COMPLETE_SCENE) as PackedScene
+	if completion_scene == null:
+		return
+	var completion_overlay := completion_scene.instantiate()
+	var hud_layer := current_scene.get_node_or_null("Player/CanvasLayer")
+	if hud_layer != null:
+		hud_layer.add_child(completion_overlay)
+	else:
+		current_scene.add_child(completion_overlay)
