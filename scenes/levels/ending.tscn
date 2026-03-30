@@ -190,9 +190,9 @@ position = Vector2(-3, -77)
 shape = SubResource("WorldBoundaryShape2D_r5vq4")
 
 [node name="Label" type="Label" parent="." unique_id=472216548]
-offset_left = 90.0
-offset_top = -70.0
-offset_right = 227.0
-offset_bottom = -56.0
+offset_left = 22.0
+offset_top = -74.0
+offset_right = 165.0
+offset_bottom = -60.0
 theme_override_font_sizes/font_size = 10
-text = "Ughhh, it was a spam call"
+text = "Ughhh, it was just a spam call"

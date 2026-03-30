@@ -528,12 +528,13 @@ theme_override_font_sizes/font_size = 12
 text = "Jump on the wall to wall jump"
 
 [node name="Label" type="Label" parent="Labels" unique_id=380381540]
-offset_left = -789.0
-offset_top = 37.0
-offset_right = -517.0
-offset_bottom = 103.0
+offset_left = -623.0
+offset_top = 17.0
+offset_right = -79.0
+offset_bottom = 83.0
 theme_override_font_sizes/font_size = 12
-text = "Press right and left arrows to move"
+text = "Hi, your name is Signal. 
+Your job is to connect incoming phone calls to their correct receiver."
 
 [node name="press space two times to double jump" type="Label" parent="Labels" unique_id=1215800674]
 offset_left = 1078.0
@@ -553,4 +554,4 @@ offset_top = 10.0
 offset_right = 50.0
 offset_bottom = 33.0
 theme_override_font_sizes/font_size = 12
-text = "Pick up the coins"
+text = "Pick up all the \"Signal points\" to win"

@@ -1,8 +1,31 @@
 [gd_scene format=3 uid="uid://4n00iwi6qrtg"]
 
 [ext_resource type="Script" uid="uid://bn2thoxpbbuxo" path="res://src/core/level_manager.gd" id="1_h0x8t"]
+[ext_resource type="PackedScene" uid="uid://bpgqvwo4v6rgi" path="res://scenes/levels/introduction.tscn" id="2_36u1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_menu_panel"]
+bg_color = Color(0.0470588, 0.0862745, 0.168627, 0.64)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.278431, 0.756863, 0.92549, 0.75)
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 10
 
 [node name="MainMenu" type="Node2D" unique_id=648985652]
+
+[node name="BackdropCamera" type="Camera2D" parent="." unique_id=205719433]
+enabled = true
+position = Vector2(0, 0)
+zoom = Vector2(4, 4)
+
+[node name="IntroBackdrop" parent="." unique_id=1539325802 instance=ExtResource("2_36u1n")]
+process_mode = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1707238037]
 
@@ -22,7 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0784314, 0.101961, 0.160784, 1)
+color = Color(0.0196078, 0.0431373, 0.0823529, 0.28)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=1156791349]
 layout_mode = 1
@@ -38,6 +61,7 @@ theme_override_constants/margin_bottom = 48
 
 [node name="Panel" type="PanelContainer" parent="CanvasLayer/Menu/MarginContainer" unique_id=1623017120]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_menu_panel")
 
 [node name="Content" type="MarginContainer" parent="CanvasLayer/Menu/MarginContainer/Panel" unique_id=1214120892]
 layout_mode = 2
@@ -49,6 +73,15 @@ theme_override_constants/margin_bottom = 32
 [node name="VBox" type="VBoxContainer" parent="CanvasLayer/Menu/MarginContainer/Panel/Content" unique_id=2119315628]
 layout_mode = 2
 theme_override_constants/separation = 18
+
+[node name="GameTitle" type="Label" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox" unique_id=998112345]
+layout_mode = 2
+theme_override_font_sizes/font_size = 86
+theme_override_constants/outline_size = 4
+theme_override_colors/font_color = Color(0.890196, 0.976471, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0509804, 0.12549, 0.25098, 1)
+text = "Signal"
+horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox" unique_id=1963892961]
 layout_mode = 2
