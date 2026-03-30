@@ -78,7 +78,7 @@ func count_level_coins() -> int:
 		var script := node.get_script() as Script
 		if script == null:
 			continue
-		if script.resource_path == "res://src/objects/collectibles/extinguisher.gd":
+		if script.resource_path == "res://src/objects/collectibles/signal.gd":
 			count += 1
 
 	return count
