@@ -44,6 +44,7 @@ var state: State = State.IDLE
 
 
 func _ready() -> void:
+	remaining_lives = STARTING_LIVES
 	spawn_position = global_position
 	fall_limit_y = spawn_position.y + FALL_LIMIT_MARGIN
 	update_life_ui()
