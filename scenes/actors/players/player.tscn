@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bh8sin8cmbbww" path="res://assets/textures/Virtual Guy/Jump (32x32).png" id="5_x6ewd"]
 [ext_resource type="Texture2D" uid="uid://djun3syg1u4du" path="res://assets/textures/Virtual Guy/Run (32x32).png" id="6_q7vxj"]
 [ext_resource type="Texture2D" uid="uid://bnkyvnk7d1tvh" path="res://assets/textures/Virtual Guy/Wall Jump (32x32).png" id="7_ybwri"]
-[ext_resource type="FontFile" path="res://assets/fonts/PressStart2P-Regular.ttf" id="8_3r1v0"]
+[ext_resource type="FontFile" uid="uid://ubuj7cbx23or" path="res://assets/fonts/PressStart2P-Regular.ttf" id="8_3r1v0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phadu"]
 atlas = ExtResource("2_mxj88")
@@ -363,8 +363,8 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
-shadow_size = 8
 shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 8
 
 [node name="Player" type="CharacterBody2D" unique_id=807048912]
 z_index = 5
@@ -393,7 +393,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopBar" type="Panel" parent="CanvasLayer/HUD"]
+[node name="TopBar" type="Panel" parent="CanvasLayer/HUD" unique_id=1917215297]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 10.0
@@ -437,3 +437,13 @@ theme_override_font_sizes/font_size = 26
 text = "SIGNAL LEFT: 0"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="SignalIndicator" type="TextureRect" parent="CanvasLayer/HUD" unique_id=1234567891]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 22.0
+offset_right = 391.0
+offset_bottom = 104.0
+scale = Vector2(0.8301593, 0.79078275)
+expand_mode = 1
+stretch_mode = 4
