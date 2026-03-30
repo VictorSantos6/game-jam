@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bh8sin8cmbbww" path="res://assets/textures/Virtual Guy/Jump (32x32).png" id="5_x6ewd"]
 [ext_resource type="Texture2D" uid="uid://djun3syg1u4du" path="res://assets/textures/Virtual Guy/Run (32x32).png" id="6_q7vxj"]
 [ext_resource type="Texture2D" uid="uid://bnkyvnk7d1tvh" path="res://assets/textures/Virtual Guy/Wall Jump (32x32).png" id="7_ybwri"]
+[ext_resource type="FontFile" path="res://assets/fonts/PressStart2P-Regular.ttf" id="8_3r1v0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phadu"]
 atlas = ExtResource("2_mxj88")
@@ -351,6 +352,20 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxv1v"]
 height = 24.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hudbar"]
+bg_color = Color(0.05, 0.08, 0.12, 0.76)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.32, 0.84, 0.92, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.35)
+
 [node name="Player" type="CharacterBody2D" unique_id=807048912]
 z_index = 5
 texture_filter = 1
@@ -378,13 +393,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TopBar" type="Panel" parent="CanvasLayer/HUD"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 790.0
+offset_bottom = 92.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hudbar")
+
 [node name="HeartsContainer" type="HBoxContainer" parent="CanvasLayer/HUD" unique_id=1052999109]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 14.0
-offset_right = 280.0
-offset_bottom = 86.0
-theme_override_constants/separation = 6
+offset_left = 34.0
+offset_top = 20.0
+offset_right = 332.0
+offset_bottom = 84.0
+theme_override_constants/separation = 10
 
 [node name="GameOverLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1474941432]
 visible = false
@@ -402,9 +425,15 @@ vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1452945633]
 layout_mode = 0
-offset_left = 409.0
-offset_top = 13.0
-offset_right = 730.0
-offset_bottom = 145.0
-theme_override_font_sizes/font_size = 52
-text = "Signal Left: 0"
+offset_left = 394.0
+offset_top = 20.0
+offset_right = 770.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.93, 0.95, 0.98, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.09, 0.16, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("8_3r1v0")
+theme_override_font_sizes/font_size = 26
+text = "SIGNAL LEFT: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
