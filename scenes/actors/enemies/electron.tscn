@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://x0ccjnybw2xo"]
+[gd_scene format=3 uid="uid://c2ho184s06r0w"]
 
 [ext_resource type="PackedScene" uid="uid://ccighg7i0l2bu" path="res://scenes/core/killzone.tscn" id="2_dgthe"]
-[ext_resource type="Script" uid="uid://m5627vaa05rx" path="res://src/actors/enemies/electron.gd" id="2_fa8k1"]
+[ext_resource type="Script" path="res://src/actors/enemies/electron.gd" id="2_fa8k1"]
 [ext_resource type="Texture2D" uid="uid://do8wwgodcdk1m" path="res://scenes/actors/enemies/Explosion_5/Explosion_3.png" id="3_8exsl"]
 [ext_resource type="Texture2D" uid="uid://de1nlegqiou0b" path="res://scenes/actors/enemies/Explosion_5/Explosion_4.png" id="4_50w16"]
 [ext_resource type="Texture2D" uid="uid://bqvevx7x5p10c" path="res://scenes/actors/enemies/Explosion_5/Explosion_5.png" id="5_ybq61"]
@@ -32,7 +32,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_74y05"]
@@ -45,26 +45,26 @@ radius = 7.0
 script = ExtResource("2_fa8k1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419331392]
-position = Vector2(45.000004, -44)
+position = Vector2(3.8146973e-06, 0)
 scale = Vector2(0.13271484, 0.13271484)
 sprite_frames = SubResource("SpriteFrames_28qtq")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.7269862
+frame_progress = 0.8802624
 
 [node name="Killzone" parent="AnimatedSprite2D" unique_id=1573277971 instance=ExtResource("2_dgthe")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Killzone" unique_id=107723072]
+position = Vector2(-6.1035156e-05, 0)
 shape = SubResource("CircleShape2D_74y05")
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=206222334]
-position = Vector2(48, -44)
+position = Vector2(1, 0)
 target_position = Vector2(9, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1265559010]
-position = Vector2(42, -44)
+position = Vector2(-1, 0)
 target_position = Vector2(-8, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=884750191]
-position = Vector2(45, -44)
 shape = SubResource("CircleShape2D_kha56")
