@@ -11,10 +11,22 @@ enum PoleRole {
 @export var cable_color: Color = Color(0.1, 0.85, 1.0, 1.0)
 @export var cable_width: float = 3.0
 
+const CONNECTION_COMPLETE_SCENE := "res://scenes/core/connection_complete.tscn"
+const CONNECTION_COMPLETE_SCRIPT := preload("res://src/core/connection_complete.gd")
+const TUTORIAL_SCENE := "res://scenes/levels/tutorial.tscn"
+const LEVEL1_SCENE := "res://scenes/levels/level1.tscn"
+const LEVEL2_SCENE := "res://scenes/levels/level2.tscn"
+const LEVEL3_SCENE := "res://scenes/levels/level3.tscn"
+const NEXT_LEVEL_AFTER_TUTORIAL := "res://scenes/levels/level1.tscn"
+const NEXT_LEVEL_AFTER_FIRST := "res://scenes/levels/level2.tscn"
+const NEXT_LEVEL_AFTER_SECOND := "res://scenes/levels/level3.tscn"
+const NEXT_LEVEL_AFTER_THIRD := "res://scenes/levels/ending.tscn"
+
 static var start_pole: Pole = null
 
 var connected_end_pole: Pole = null
 var cable_line: Line2D = null
+var has_triggered_completion := false
 
 
 func _ready() -> void:
@@ -55,6 +67,7 @@ func connect_start_to_me() -> void:
 		return
 
 	start_pole.connect_to_end(self)
+	trigger_level_completion()
 
 
 func connect_to_end(end_pole: Pole) -> void:
@@ -108,3 +121,38 @@ func find_game_manager() -> Node:
 		current = current.get_parent()
 
 	return null
+
+
+func trigger_level_completion() -> void:
+	if has_triggered_completion:
+		return
+	has_triggered_completion = true
+
+	var current_scene := get_tree().current_scene
+	if current_scene == null:
+		return
+
+	var current_path := current_scene.scene_file_path
+	var message := "Connection completed"
+	var next_scene := ""
+
+	match current_path:
+		TUTORIAL_SCENE:
+			message = "Tutorial connection completed"
+			next_scene = NEXT_LEVEL_AFTER_TUTORIAL
+		LEVEL1_SCENE:
+			message = "First connection completed"
+			next_scene = NEXT_LEVEL_AFTER_FIRST
+		LEVEL2_SCENE:
+			message = "Second connection completed"
+			next_scene = NEXT_LEVEL_AFTER_SECOND
+		LEVEL3_SCENE:
+			message = "Third connection completed"
+			next_scene = NEXT_LEVEL_AFTER_THIRD
+		_:
+			# Only run this transition flow for level progression scenes.
+			return
+
+	CONNECTION_COMPLETE_SCRIPT.pending_message = message
+	CONNECTION_COMPLETE_SCRIPT.pending_next_scene = next_scene
+	get_tree().change_scene_to_file(CONNECTION_COMPLETE_SCENE)
