@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://j54y77ts2qx2" path="res://scenes/objects/collectibles/extinguisher.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://ccighg7i0l2bu" path="res://scenes/core/killzone.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cds5dyc4tpuiy" path="res://scenes/actors/enemies/ladybug.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://c2ho184s06r0w" path="res://scenes/actors/enemies/electron.tscn" id="8_8a7m2"]
+[ext_resource type="PackedScene" path="res://scenes/actors/enemies/electron.tscn" id="8_8a7m2"]
+[ext_resource type="PackedScene" path="res://scenes/core/Pole.tscn" id="9_plydf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
 texture = ExtResource("2_yqjtg")
@@ -627,7 +628,6 @@ limit_top = -10000001
 limit_right = 10000205
 limit_bottom = 210
 limit_smoothed = true
-position_smoothing_enabled = false
 
 [node name="Platforms" type="Node" parent="." unique_id=1141194026]
 
@@ -722,9 +722,6 @@ position = Vector2(929, -593)
 [node name="extinguisher23" parent="Extinguishers" unique_id=414757571 instance=ExtResource("4_lbhrr")]
 position = Vector2(1088, -591)
 
-[node name="extinguisher24" parent="Extinguishers" unique_id=561880695 instance=ExtResource("4_lbhrr")]
-position = Vector2(1248, -593)
-
 [node name="Killzone" parent="." unique_id=1573277971 instance=ExtResource("5_iywne")]
 position = Vector2(52, 214)
 
@@ -760,8 +757,12 @@ position = Vector2(851, -542)
 [node name="ladybug7" parent="Enemies" unique_id=1952994553 instance=ExtResource("6_p57ef")]
 position = Vector2(1132, -534)
 
-[node name="Electron3" parent="Enemies" unique_id=1746809415 instance=ExtResource("8_8a7m2")]
-position = Vector2(1193, -546)
-
 [node name="ladybug8" parent="Enemies" unique_id=413695292 instance=ExtResource("6_p57ef")]
 position = Vector2(989, -534)
+
+[node name="Pole2" parent="." unique_id=703331557 instance=ExtResource("9_plydf")]
+position = Vector2(-78, 102)
+
+[node name="PoleEnd" parent="." unique_id=1647662865 instance=ExtResource("9_plydf")]
+position = Vector2(1184, -537)
+role = 1
