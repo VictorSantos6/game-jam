@@ -10,6 +10,8 @@ const STARTING_LIVES := 3
 const MAIN_MENU_PATH := "res://scenes/main_menu.tscn"
 const HIT_STUN_TIME := 0.4
 const DEATH_FALL_TIME := 1.2
+const FALL_LIMIT_MARGIN := 900.0
+const DAMAGE_COOLDOWN_MS := 700
 
 const WALL_JUMP_FORCE = Vector2(600,  -400)  # Increased horizontal push
 const WALL_SLIDE_SPEED = 60.0  # Max speed when sliding down wall
@@ -21,6 +23,9 @@ var max_jumps := 2
 var is_dead := false
 var wall_jump_started := false
 var is_in_hit_stun := false
+var spawn_position := Vector2.ZERO
+var fall_limit_y := 0.0
+var last_damage_time_ms := -1000000
 
 enum State {
 	IDLE,
@@ -36,6 +41,8 @@ var state: State = State.IDLE
 
 
 func _ready() -> void:
+	spawn_position = global_position
+	fall_limit_y = spawn_position.y + FALL_LIMIT_MARGIN
 	update_life_ui()
 	game_over_label.visible = false
 
@@ -45,6 +52,10 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		change_state(State.FALL)
 		update_animation(0.0)
+		return
+
+	if global_position.y > fall_limit_y:
+		lose_life(true)
 		return
 
 	if is_in_hit_stun:
@@ -105,9 +116,16 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = direction < 0
 
 
-func lose_life() -> void:
+func lose_life(respawn_at_spawn: bool = false) -> void:
 	if is_dead or is_in_hit_stun:
 		return
+
+	var now_ms := Time.get_ticks_msec()
+	if now_ms - last_damage_time_ms < DAMAGE_COOLDOWN_MS:
+		return
+	last_damage_time_ms = now_ms
+
+	var should_respawn := respawn_at_spawn or global_position.y > fall_limit_y
 
 	is_in_hit_stun = true
 	change_state(State.HIT)
@@ -128,6 +146,16 @@ func lose_life() -> void:
 		await get_tree().create_timer(DEATH_FALL_TIME).timeout
 		remaining_lives = STARTING_LIVES
 		get_tree().change_scene_to_file(MAIN_MENU_PATH)
+		return
+
+	if should_respawn:
+		global_position = spawn_position
+		velocity = Vector2.ZERO
+		jump_count = 0
+		wall_jump_started = false
+		change_state(State.IDLE)
+		await get_tree().create_timer(HIT_STUN_TIME).timeout
+		is_in_hit_stun = false
 		return
 
 	await get_tree().create_timer(HIT_STUN_TIME).timeout

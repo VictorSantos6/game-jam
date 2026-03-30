@@ -491,14 +491,6 @@ position = Vector2(-20, 115)
 [node name="extinguisher4" parent="Extinguishers" unique_id=932662231 instance=ExtResource("5_cq4me")]
 position = Vector2(-43, 115)
 
-[node name="Label3" type="Label" parent="Extinguishers" unique_id=1415814351]
-offset_left = -48.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 33.0
-theme_override_font_sizes/font_size = 12
-text = "Pick up the coins"
-
 [node name="extinguisher6" parent="Extinguishers" unique_id=1822879443 instance=ExtResource("5_cq4me")]
 position = Vector2(5, 115)
 
@@ -554,3 +546,11 @@ text = "Press Space two time to double jump
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Labels" unique_id=1415814351]
+offset_left = -48.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 12
+text = "Pick up the coins"
