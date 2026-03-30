@@ -6,6 +6,7 @@ const LEVEL_SCENES: Array[String] = [
 	"res://scenes/levels/level1.tscn",
 	"res://scenes/levels/level2.tscn",
 	"res://scenes/levels/level3.tscn",
+	"res://scenes/levels/ending.tscn",
 ]
 
 @onready var level_buttons: Array[Button] = [
@@ -14,6 +15,7 @@ const LEVEL_SCENES: Array[String] = [
 	$MarginContainer/Panel/Content/VBox/Buttons/Level1Button,
 	$MarginContainer/Panel/Content/VBox/Buttons/Level2Button,
 	$MarginContainer/Panel/Content/VBox/Buttons/Level3Button,
+	$MarginContainer/Panel/Content/VBox/Buttons/EndingButton,
 ]
 @onready var status_label: Label = $MarginContainer/Panel/Content/VBox/Status
 
@@ -44,6 +46,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_load_level(3)
 		KEY_3:
 			_load_level(4)
+		KEY_E:
+			_load_level(5)
 
 
 func _on_level_button_pressed(level_index: int) -> void:

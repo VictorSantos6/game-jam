@@ -92,10 +92,15 @@ custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 text = "Level 3"
 
+[node name="EndingButton" type="Button" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox/Buttons" unique_id=2034567890]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Ending"
+
 [node name="Hint" type="Label" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox" unique_id=557199832]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
-text = "Click a button or press 1, 2, or 3."
+text = "Click a button or press 1, 2, 3, or E."
 horizontal_alignment = 1
 
 [node name="Status" type="Label" parent="CanvasLayer/Menu/MarginContainer/Panel/Content/VBox" unique_id=127559550]
