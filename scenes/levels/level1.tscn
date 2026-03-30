@@ -628,6 +628,7 @@ limit_top = -10000001
 limit_right = 10000205
 limit_bottom = 210
 limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="Platforms" type="Node" parent="." unique_id=1141194026]
 

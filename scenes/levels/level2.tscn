@@ -623,7 +623,7 @@ position = Vector2(36, 45)
 zoom = Vector2(4, 4)
 limit_bottom = 150
 limit_smoothed = true
-position_smoothing_enabled = false
+position_smoothing_enabled = true
 
 [node name="Platforms" type="Node" parent="." unique_id=1141194026]
 
