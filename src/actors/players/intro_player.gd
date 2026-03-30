@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 130.0
+const PAUSE_MENU_PATH := "res://scenes/pause_menu.tscn"
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -26,6 +27,18 @@ func _update_animation(direction: float) -> void:
 		_play_first_available(["running", "run"])
 	else:
 		_play_first_available(["idle"])
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_ESCAPE or event.keycode == KEY_P:
+			_show_pause_menu()
+
+
+func _show_pause_menu() -> void:
+	get_tree().paused = true
+	var pause_menu = load(PAUSE_MENU_PATH).instantiate()
+	add_child(pause_menu)
 
 
 func _play_first_available(candidates: Array[String]) -> void:
