@@ -8,6 +8,7 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 const STARTING_LIVES := 3
 const MAIN_MENU_PATH := "res://scenes/main_menu.tscn"
+const PAUSE_MENU_PATH := "res://scenes/pause_menu.tscn"
 const HIT_STUN_TIME := 0.4
 const DEATH_FALL_TIME := 1.2
 const FALL_LIMIT_MARGIN := 900.0
@@ -116,6 +117,20 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = direction < 0
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_ESCAPE or event.keycode == KEY_P:
+			_show_pause_menu()
+
+
+func _show_pause_menu() -> void:
+	if is_dead:
+		return
+	get_tree().paused = true
+	var pause_menu = load(PAUSE_MENU_PATH).instantiate()
+	add_child(pause_menu)
+
+
 func lose_life(respawn_at_spawn: bool = false) -> void:
 	if is_dead or is_in_hit_stun:
 		return
@@ -153,9 +168,9 @@ func lose_life(respawn_at_spawn: bool = false) -> void:
 		velocity = Vector2.ZERO
 		jump_count = 0
 		wall_jump_started = false
-		change_state(State.IDLE)
 		await get_tree().create_timer(HIT_STUN_TIME).timeout
 		is_in_hit_stun = false
+		change_state(State.IDLE)
 		return
 
 	await get_tree().create_timer(HIT_STUN_TIME).timeout
