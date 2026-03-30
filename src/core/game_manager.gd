@@ -12,14 +12,14 @@ func _ready() -> void:
 	update_score_label()
 
 func add_point() -> void:
-	score -= 1
+	score = max(score - 1, 0)
 	update_score_label()
 
 
 func has_all_coins() -> bool:
 	if total_coins <= 0:
 		return true
-	return score >= total_coins
+	return score <= 0
 
 
 func update_score_label() -> void:
