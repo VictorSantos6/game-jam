@@ -1,0 +1,58 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/core/pause_menu.gd" id="1_pausemenu"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1]
+script = ExtResource("1_pausemenu")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=3]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=4]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=5]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=6]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=7]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=8]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Resume"
+
+[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=9]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Main Menu"

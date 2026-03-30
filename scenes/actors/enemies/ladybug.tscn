@@ -167,13 +167,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jelj8"]
 size = Vector2(12, 10)
 
-[node name="ladybug" type="Node2D" unique_id=1868049567]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(12, 10)
+
+[node name="ladybug" type="CharacterBody2D" unique_id=1868049567]
 script = ExtResource("1_pg050")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=412346871]
 sprite_frames = SubResource("SpriteFrames_7l0f7")
 animation = &"walking"
 autoplay = "walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2017654103]
+shape = SubResource("RectangleShape2D_body")
 
 [node name="Killzone" parent="AnimatedSprite2D" unique_id=1573277971 instance=ExtResource("2_485k6")]
 
