@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://mo77p07tut87" path="res://assets/textures/lab_tileset_LITE.png" id="2_8w0pe"]
 [ext_resource type="PackedScene" uid="uid://y2anhja757e8" path="res://scenes/actors/players/player.tscn" id="3_7eb4w"]
 [ext_resource type="PackedScene" uid="uid://cc7hhxrlg55i8" path="res://scenes/objects/platform.tscn" id="4_hadiw"]
-[ext_resource type="PackedScene" uid="uid://j54y77ts2qx2" path="res://scenes/objects/collectibles/extinguisher.tscn" id="5_72x3h"]
+[ext_resource type="PackedScene" uid="uid://j54y77ts2qx2" path="res://scenes/objects/collectibles/signal.tscn" id="5_72x3h"]
 [ext_resource type="PackedScene" uid="uid://ccighg7i0l2bu" path="res://scenes/core/killzone.tscn" id="6_wb0vq"]
 [ext_resource type="PackedScene" uid="uid://cds5dyc4tpuiy" path="res://scenes/actors/enemies/ladybug.tscn" id="7_ah4rv"]
 
@@ -623,7 +623,6 @@ position = Vector2(36, 45)
 zoom = Vector2(4, 4)
 limit_bottom = 150
 limit_smoothed = true
-position_smoothing_enabled = false
 
 [node name="Platforms" type="Node" parent="." unique_id=1141194026]
 
@@ -644,18 +643,18 @@ position = Vector2(205, -192)
 libraries/ = SubResource("AnimationLibrary_u5sy4")
 autoplay = &"move"
 
-[node name="Extinguishers" type="Node" parent="." unique_id=1407832497]
+[node name="Signals" type="Node" parent="." unique_id=1407832497]
 
-[node name="extinguisher" parent="Extinguishers" unique_id=434161155 instance=ExtResource("5_72x3h")]
+[node name="signal" parent="Signals" unique_id=434161155 instance=ExtResource("5_72x3h")]
 position = Vector2(16, -310)
 
-[node name="extinguisher2" parent="Extinguishers" unique_id=1642771633 instance=ExtResource("5_72x3h")]
+[node name="signal2" parent="Signals" unique_id=1642771633 instance=ExtResource("5_72x3h")]
 position = Vector2(-18, -311)
 
-[node name="extinguisher3" parent="Extinguishers" unique_id=1327573969 instance=ExtResource("5_72x3h")]
+[node name="signal3" parent="Signals" unique_id=1327573969 instance=ExtResource("5_72x3h")]
 position = Vector2(-53, -311)
 
-[node name="extinguisher4" parent="Extinguishers" unique_id=194492739 instance=ExtResource("5_72x3h")]
+[node name="signal4" parent="Signals" unique_id=194492739 instance=ExtResource("5_72x3h")]
 position = Vector2(204, -169)
 
 [node name="Killzone" parent="." unique_id=1573277971 instance=ExtResource("6_wb0vq")]

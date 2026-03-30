@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://y2anhja757e8" path="res://scenes/actors/players/player.tscn" id="2_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://ccighg7i0l2bu" path="res://scenes/core/killzone.tscn" id="3_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://cds5dyc4tpuiy" path="res://scenes/actors/enemies/ladybug.tscn" id="4_4kmhl"]
-[ext_resource type="PackedScene" uid="uid://j54y77ts2qx2" path="res://scenes/objects/collectibles/extinguisher.tscn" id="5_cq4me"]
-[ext_resource type="PackedScene" path="res://scenes/actors/enemies/electron.tscn" id="7_iig34"]
+[ext_resource type="PackedScene" uid="uid://j54y77ts2qx2" path="res://scenes/objects/collectibles/signal.tscn" id="5_cq4me"]
+[ext_resource type="PackedScene" uid="uid://c2ho184s06r0w" path="res://scenes/actors/enemies/electron.tscn" id="7_iig34"]
 [ext_resource type="PackedScene" path="res://scenes/core/Pole.tscn" id="8_3e81p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kmhl"]
@@ -475,36 +475,36 @@ shape = SubResource("WorldBoundaryShape2D_4kmhl")
 [node name="ladybug" parent="." unique_id=1868049567 instance=ExtResource("4_4kmhl")]
 position = Vector2(2187, -247)
 
-[node name="Extinguishers" type="Node" parent="." unique_id=2111062450]
+[node name="Signals" type="Node" parent="." unique_id=2111062450]
 
-[node name="extinguisher" parent="Extinguishers" unique_id=434161155 instance=ExtResource("5_cq4me")]
+[node name="signal" parent="Signals" unique_id=434161155 instance=ExtResource("5_cq4me")]
 position = Vector2(-112, 115)
 
-[node name="extinguisher2" parent="Extinguishers" unique_id=386314778 instance=ExtResource("5_cq4me")]
+[node name="signal2" parent="Signals" unique_id=386314778 instance=ExtResource("5_cq4me")]
 position = Vector2(-89, 115)
 
-[node name="extinguisher3" parent="Extinguishers" unique_id=2033998391 instance=ExtResource("5_cq4me")]
+[node name="signal3" parent="Signals" unique_id=2033998391 instance=ExtResource("5_cq4me")]
 position = Vector2(-66, 115)
 
-[node name="extinguisher5" parent="Extinguishers" unique_id=2093084966 instance=ExtResource("5_cq4me")]
+[node name="signal5" parent="Signals" unique_id=2093084966 instance=ExtResource("5_cq4me")]
 position = Vector2(-20, 115)
 
-[node name="extinguisher4" parent="Extinguishers" unique_id=932662231 instance=ExtResource("5_cq4me")]
+[node name="signal4" parent="Signals" unique_id=932662231 instance=ExtResource("5_cq4me")]
 position = Vector2(-43, 115)
 
-[node name="extinguisher6" parent="Extinguishers" unique_id=1822879443 instance=ExtResource("5_cq4me")]
+[node name="signal6" parent="Signals" unique_id=1822879443 instance=ExtResource("5_cq4me")]
 position = Vector2(5, 115)
 
-[node name="extinguisher7" parent="Extinguishers" unique_id=1715334060 instance=ExtResource("5_cq4me")]
+[node name="signal7" parent="Signals" unique_id=1715334060 instance=ExtResource("5_cq4me")]
 position = Vector2(28, 115)
 
-[node name="extinguisher8" parent="Extinguishers" unique_id=1127861718 instance=ExtResource("5_cq4me")]
+[node name="signal8" parent="Signals" unique_id=1127861718 instance=ExtResource("5_cq4me")]
 position = Vector2(51, 115)
 
-[node name="extinguisher9" parent="Extinguishers" unique_id=114260244 instance=ExtResource("5_cq4me")]
+[node name="signal9" parent="Signals" unique_id=114260244 instance=ExtResource("5_cq4me")]
 position = Vector2(97, 115)
 
-[node name="extinguisher10" parent="Extinguishers" unique_id=1146819 instance=ExtResource("5_cq4me")]
+[node name="signal10" parent="Signals" unique_id=1146819 instance=ExtResource("5_cq4me")]
 position = Vector2(74, 115)
 
 [node name="Labels" type="Node" parent="." unique_id=1593971169]

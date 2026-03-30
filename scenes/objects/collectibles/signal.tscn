@@ -1,12 +1,29 @@
 [gd_scene format=3 uid="uid://j54y77ts2qx2"]
 
 [ext_resource type="Texture2D" uid="uid://pt8s5urix2w0" path="res://assets/textures/separated/tile012.png" id="1_0bl7f"]
-[ext_resource type="Script" uid="uid://b4gmo0qcr0v65" path="res://src/objects/collectibles/extinguisher.gd" id="1_k1n1a"]
+[ext_resource type="Script" uid="uid://b4gmo0qcr0v65" path="res://src/objects/collectibles/signal.gd" id="1_k1n1a"]
 [ext_resource type="AudioStream" uid="uid://rq4h6qydr6ou" path="res://assets/audio/sfx/collect_extinguisher.mp3" id="2_fdt0t"]
+[ext_resource type="Texture2D" uid="uid://d37tjbn7xpdgl" path="res://assets/textures/wifi sprite(2).png" id="3_cgcfb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfv2v"]
 atlas = ExtResource("1_0bl7f")
 region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eag3y"]
+atlas = ExtResource("3_cgcfb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsyf7"]
+atlas = ExtResource("3_cgcfb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcohu"]
+atlas = ExtResource("3_cgcfb")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fpfs"]
+atlas = ExtResource("3_cgcfb")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7xad8"]
 animations = [{
@@ -17,11 +34,27 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eag3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsyf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcohu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fpfs")
+}],
+"loop": true,
+"name": &"wifi",
+"speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0yxc"]
-radius = 5.0
-height = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_2g47f"]
+radius = 8.0
 
 [sub_resource type="Animation" id="Animation_fdt0t"]
 length = 0.001
@@ -121,7 +154,7 @@ _data = {
 &"pickup": SubResource("Animation_k1n1a")
 }
 
-[node name="extinguisher" type="Area2D" unique_id=434161155]
+[node name="signal" type="Area2D" unique_id=434161155]
 texture_filter = 1
 collision_mask = 2
 script = ExtResource("1_k1n1a")
@@ -129,10 +162,12 @@ script = ExtResource("1_k1n1a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1837980921]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7xad8")
+animation = &"wifi"
+autoplay = "wifi"
+frame_progress = 0.21249677
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=341883742]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_y0yxc")
+shape = SubResource("CircleShape2D_2g47f")
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=1866402553]
 stream = ExtResource("2_fdt0t")
